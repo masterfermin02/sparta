@@ -59,7 +59,6 @@ public class EnemyPatrol : MonoBehaviour
             _animator.SetBool("Idle", false);
 
             Vector2 direction = _target.transform.position - transform.position;
-            float xDirection = direction.x;
 
             transform.Translate(direction.normalized * speed * Time.deltaTime);
 
@@ -79,12 +78,5 @@ public class EnemyPatrol : MonoBehaviour
 
         Debug.Log("Waited enough, let's update the target and move again");
         StartCoroutine("PatrolToTarget");
-    }
-
-    void CaShoot()
-    {
-        if(_weapon != null) {
-            _weapon.Shoot();
-        }
     }
 }
