@@ -71,12 +71,15 @@ public class EnemyPatrol : MonoBehaviour
         _animator.SetBool("Idle", true);
         _animator.SetTrigger("Shoot");
 
-    
-
         Debug.Log("Waiting for " + waitingTime + " seconds");
         yield return new WaitForSeconds(waitingTime);
 
         Debug.Log("Waited enough, let's update the target and move again");
         StartCoroutine("PatrolToTarget");
+    }
+
+    public void Shoot()
+    {
+        _weapon.Shoot();
     }
 }
