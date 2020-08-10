@@ -55,10 +55,14 @@ public class PlayerController : MonoBehaviour
 		}
 
 		// Is Grounded?
-		_isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+		if (!_isGrounded)
+        {
+			_isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        }
 
 		// Is Jumping?
 		if (Input.GetButtonDown("Jump") && _isGrounded == true && _isAttacking == false) {
+			_isGrounded = false;
 			_rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 		}
 

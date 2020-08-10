@@ -8,6 +8,7 @@ public class EnemyPatrol : MonoBehaviour
     public float minX;
     public float maxX;
     public float waitingTime = 2f;
+    public bool facingRight = true;
 
     private GameObject _target;
     private Animator _animator;
@@ -38,18 +39,36 @@ public class EnemyPatrol : MonoBehaviour
         if (_target == null) {
             _target = new GameObject("Target");
             _target.transform.position = new Vector2(minX, transform.position.y);
-            transform.localScale = new Vector3(-1, 1, 1);
+            if (facingRight) {
+               transform.localScale = new Vector3(-1, 1, 1);
+            }
+
             return;
         }
 
-        if (_target.transform.position.x == minX) {
+        if (_target.transform.position.x == minX && facingRight) {
             _target.transform.position = new Vector2(maxX, transform.position.y);
             transform.localScale = new Vector3(1, 1, 1);
             return;
         }
-        
+
+        if (_target.transform.position.x == minX && !facingRight)
+        {
+            _target.transform.position = new Vector2(maxX, transform.position.y);
+            transform.localScale = new Vector3(-1, 1, 1);
+            return;
+        }
+
+        if (facingRight)
+        {
+            _target.transform.position = new Vector2(minX, transform.position.y);
+            transform.localScale = new Vector3(-1, 1, 1);
+            return;
+        }
+
         _target.transform.position = new Vector2(minX, transform.position.y);
-        transform.localScale = new Vector3(-1, 1, 1);
+        transform.localScale = new Vector3(1, 1, 1);
+
     }
 
     private IEnumerator PatrolToTarget()
@@ -80,6 +99,9 @@ public class EnemyPatrol : MonoBehaviour
 
     public void Shoot()
     {
-        _weapon.Shoot();
+        if (_weapon != null)
+        {
+            _weapon.Shoot();
+        }
     }
 }

@@ -10,10 +10,8 @@ public class InstantiantePrefab : MonoBehaviour
 
     public void Instantiate() 
     {
-        GameObject instantiatedObject = Instantiate(prefab, point.position, Quaternion.identity) as GameObject;
-
         if (livingTime > 0f) {
-            Destroy(instantiatedObject, livingTime);
+            Destroy(Instantiate(prefab, point.position, Quaternion.identity) as GameObject, livingTime);
         }
     }
 }
