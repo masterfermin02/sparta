@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - ShootingArea
+  - BigBullet
+  - RecoveryHeart
+  - Props
   layers:
   - Default
   - TransparentFX
@@ -15,9 +20,9 @@ TagManager:
   - 
   - Ground
   - Wall
-  - 
-  - 
-  - 
+  - Enemy
+  - Hurt
+  - Hit
   - 
   - 
   - 

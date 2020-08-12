@@ -14,18 +14,20 @@ public class EnemyPatrol : MonoBehaviour
     public float aimingTime = 0.5f;
     public float shootingTime = 1.5f;
 
-    private GameObject _target;
     private Animator _animator;
     private Weapon _weapon;
     private Rigidbody2D _rigidbody;
     private bool _facingRight;
     private bool _attacking = false;
+    private AudioSource _audio;
+    
 
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _weapon = GetComponentInChildren<Weapon>();
+        _audio = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -75,15 +77,12 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (!_attacking && collision.CompareTag("Player"))
         {
-            StartCoroutine(AimAndShoot());
+            StartCoroutine("AimAndShoot");
         }
     }
 
     private IEnumerator AimAndShoot()
     {
-        float speedBakcup = speed;
-        speed = 0;
-
         _attacking = true;
         yield return new WaitForSeconds(aimingTime);
 
@@ -92,7 +91,6 @@ public class EnemyPatrol : MonoBehaviour
         yield return new WaitForSeconds(shootingTime);
 
         _attacking = false;
-        speed = speedBakcup;
     }
 
     private void FixedUpdate()
@@ -104,6 +102,11 @@ public class EnemyPatrol : MonoBehaviour
             horizontalVelocity = horizontalVelocity * -1f;
         }
 
+        if (_attacking)
+        {
+            horizontalVelocity = 0f;
+        }
+
         _rigidbody.velocity = new Vector2(horizontalVelocity, _rigidbody.velocity.y);
     }
 
@@ -112,6 +115,18 @@ public class EnemyPatrol : MonoBehaviour
         if (_weapon != null)
         {
             _weapon.Shoot();
+            _audio.Play();
         }
+    }
+
+    private void OnEnable()
+    {
+        _attacking = false;
+    }
+
+    private void OnDisable()
+    {
+        _attacking = false;
+        StopCoroutine("AimAndShoot");
     }
 }
