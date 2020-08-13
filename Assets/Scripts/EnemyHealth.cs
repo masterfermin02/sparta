@@ -5,7 +5,9 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public int totalHealth = 1;
+    public int deadPoints = 10;
 
+    PlayerAttack player;
     private int health;
     private SpriteRenderer _renderer;
     private Color defaultColor;
@@ -14,6 +16,8 @@ public class EnemyHealth : MonoBehaviour
     {
         _renderer = GetComponent<SpriteRenderer>();
         defaultColor = _renderer.color;
+        player = GameObject.Find("Player").GetComponent<PlayerAttack>();
+
     }
 
     public void AddDamage(int amount)
@@ -23,6 +27,11 @@ public class EnemyHealth : MonoBehaviour
 
         if (health <= 0)
         {
+            if (player)
+            {
+                player.AddScore(deadPoints);
+            }
+            
             gameObject.SetActive(false);
         }
 

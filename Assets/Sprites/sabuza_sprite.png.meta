@@ -14,6 +14,36 @@ TextureImporter:
   - first:
       213: 4391473512584115857
     second: sabuza_sprite_3
+  - first:
+      213: 1087078370637772105
+    second: sabuza_sprite_4
+  - first:
+      213: 8979006605875554456
+    second: sabuza_sprite_5
+  - first:
+      213: 3084603023898201247
+    second: sabuza_sprite_6
+  - first:
+      213: -7553876828445252236
+    second: sabuza_sprite_7
+  - first:
+      213: 1960920769827112005
+    second: sabuza_sprite_8
+  - first:
+      213: 3691791850852728033
+    second: sabuza_sprite_9
+  - first:
+      213: 2327161570359684063
+    second: sabuza_sprite_10
+  - first:
+      213: 1907525199639889580
+    second: sabuza_sprite_11
+  - first:
+      213: -6709281456493334718
+    second: sabuza_sprite_12
+  - first:
+      213: 1994108301519400083
+    second: sabuza_sprite_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -114,10 +144,10 @@ TextureImporter:
       name: sabuza_sprite_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 617
-        width: 229
-        height: 407
+        x: 260
+        y: 646
+        width: 197
+        height: 370
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,10 +165,10 @@ TextureImporter:
       name: sabuza_sprite_1
       rect:
         serializedVersion: 2
-        x: 311
-        y: 641
-        width: 211
-        height: 383
+        x: 581
+        y: 625
+        width: 187
+        height: 398
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,10 +186,10 @@ TextureImporter:
       name: sabuza_sprite_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 228
-        width: 311
-        height: 340
+        x: 59
+        y: 590
+        width: 6
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,10 +207,10 @@ TextureImporter:
       name: sabuza_sprite_3
       rect:
         serializedVersion: 2
-        x: 319
-        y: 180
-        width: 267
-        height: 381
+        x: 574
+        y: 583
+        width: 6
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,6 +220,216 @@ TextureImporter:
       bones: []
       spriteID: 196fc1684e5a1fc30800000000000000
       internalID: 4391473512584115857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sabuza_sprite_4
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 577
+        width: 5
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 945ffdcb404161f00800000000000000
+      internalID: 1087078370637772105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sabuza_sprite_5
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 575
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 898291b6fe6db9c70800000000000000
+      internalID: 8979006605875554456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sabuza_sprite_6
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 571
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9c4c887b16beca20800000000000000
+      internalID: 3084603023898201247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sabuza_sprite_7
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 581
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4756773fb0d3b2790800000000000000
+      internalID: -7553876828445252236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sabuza_sprite_8
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 577
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5440b3efc07963b10800000000000000
+      internalID: 1960920769827112005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sabuza_sprite_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 408
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ec32ced021eb3330800000000000000
+      internalID: 3691791850852728033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sabuza_sprite_10
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 179
+        width: 259
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdbaa305e1dbb4020800000000000000
+      internalID: 2327161570359684063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sabuza_sprite_11
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 0
+        width: 314
+        height: 577
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca644a40014e87a10800000000000000
+      internalID: 1907525199639889580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sabuza_sprite_12
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 185
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24f69970018d3e2a0800000000000000
+      internalID: -6709281456493334718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sabuza_sprite_13
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 0
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39ca8bb5fee7cab10800000000000000
+      internalID: 1994108301519400083
       vertices: []
       indices: 
       edges: []

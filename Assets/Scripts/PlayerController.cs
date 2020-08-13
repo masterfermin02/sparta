@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
 	// Attack
 	private bool _isAttacking;
 
-
 	void Awake()
 	{
 		_rigidbody = GetComponent<Rigidbody2D>();

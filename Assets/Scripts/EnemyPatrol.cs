@@ -5,8 +5,6 @@ using UnityEngine;
 public class EnemyPatrol : MonoBehaviour
 {
     public float speed = 1f;
-    public float minX;
-    public float maxX;
     public float waitingTime = 2f;
     public float wallAware = 0.5f;
     public LayerMask groundLayer;
@@ -75,6 +73,7 @@ public class EnemyPatrol : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        Debug.Log("Attacking: " + _attacking + " " + collision.tag);
         if (!_attacking && collision.CompareTag("Player"))
         {
             StartCoroutine("AimAndShoot");
@@ -95,19 +94,22 @@ public class EnemyPatrol : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float horizontalVelocity = speed;
+        _rigidbody.velocity = new Vector2(GetSpeed(), _rigidbody.velocity.y);
+    }
+
+    private float GetSpeed()
+    {
+        if (_attacking)
+        {
+            return 0f;
+        }
 
         if (!_facingRight)
         {
-            horizontalVelocity = horizontalVelocity * -1f;
+            return speed * -1f;
         }
 
-        if (_attacking)
-        {
-            horizontalVelocity = 0f;
-        }
-
-        _rigidbody.velocity = new Vector2(horizontalVelocity, _rigidbody.velocity.y);
+        return speed;
     }
 
     public void Shoot()

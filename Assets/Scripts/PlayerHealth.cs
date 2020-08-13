@@ -93,7 +93,6 @@ public class PlayerHealth : MonoBehaviour
         }
 
         EnableRecoveryHealths();
-        
     }
 
     private void EnableRecoveryHealths()
@@ -115,6 +114,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnDisable()
     {
+        DisableEnemies();
         if (gameOverMenu != null)
         {
             gameOverMenu.gameObject.SetActive(true);
@@ -125,5 +125,11 @@ public class PlayerHealth : MonoBehaviour
             hordes.gameObject.SetActive(false);
         }
         StopCoroutine("VisualFeedBack");
+    }
+
+    private void DisableEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        Array.ForEach(enemies, enemy => enemy.SendMessageUpwards("AddDamage", 2));
     }
 }

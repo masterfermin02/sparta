@@ -76,7 +76,7 @@ public class Bullet : MonoBehaviour
     private void explosion()
     {
         speed = 0;
-        _renderer.color = Color.Lerp(initialColor, finalColor, 1f);
+        _renderer.enabled = false;
 
         if (explosionEffect)
         {

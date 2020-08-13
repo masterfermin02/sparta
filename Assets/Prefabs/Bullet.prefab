@@ -155,8 +155,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -374610839
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 3674543409907299621, guid: 7755ead55e7564f3fad16722022a5ded,
     type: 3}
@@ -187,7 +187,7 @@ MonoBehaviour:
   direction: {x: 1, y: 0}
   livingTime: 3
   initialColor: {r: 1, g: 1, b: 1, a: 1}
-  finalColor: {r: 0.9622642, g: 0.23778899, b: 0.17702031, a: 0}
+  finalColor: {r: 0.43734425, g: 0.65816987, b: 0.7924528, a: 1}
   explosionEffect: {fileID: 5222716713795110021}
 --- !u!58 &1101492436642441002
 CircleCollider2D:
@@ -290,15 +290,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4818237991564162705, guid: 3303d1d6e80e84558bfd448424d275c0,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5559411256297220965, guid: 3303d1d6e80e84558bfd448424d275c0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.04
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5559411256297220965, guid: 3303d1d6e80e84558bfd448424d275c0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.06
+      value: 0.018
       objectReference: {fileID: 0}
     - target: {fileID: 5559411256297220965, guid: 3303d1d6e80e84558bfd448424d275c0,
         type: 3}

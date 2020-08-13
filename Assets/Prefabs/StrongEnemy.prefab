@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6023123701869861840}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.0143385, y: 4.606388, z: -0.012270343}
+  m_LocalPosition: {x: 4.0143385, y: 4.606388, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8449347569034074901}
@@ -250,8 +250,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.8
-  minX: -2.17
-  maxX: 2.77
   waitingTime: 3
   wallAware: 1
   groundLayer:
@@ -330,7 +328,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8663880675369003201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,7 +341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1e79e82c9514f559c67516bc1509f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHealth: 2
+  totalHealth: 1
+  deadPoints: 15
 --- !u!82 &7634009748067330006
 AudioSource:
   m_ObjectHideFlags: 0
