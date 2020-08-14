@@ -56,13 +56,13 @@ public class Bullet : MonoBehaviour
     {
         if (!_returning && collision.CompareTag("Player"))
         {
-            collision.SendMessageUpwards("AddDamage", damage);
+            collision.SendMessageUpwards("AddDamage", damage, SendMessageOptions.DontRequireReceiver);
             explosion();
         }
 
         if (_returning && collision.CompareTag("Enemy"))
         {
-            collision.SendMessageUpwards("AddDamage", 1);
+            collision.SendMessageUpwards("AddDamage", 1, SendMessageOptions.DontRequireReceiver);
             explosion();
         }
     }

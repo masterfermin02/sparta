@@ -256,8 +256,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   playerAware: 3
-  aimingTime: 0.5
+  aimingTime: 0.2
   shootingTime: 1.5
+  shootingRepeat: 2
 --- !u!95 &1179615789
 Animator:
   serializedVersion: 3

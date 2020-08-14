@@ -11,6 +11,7 @@ public class EnemyPatrol : MonoBehaviour
     public float playerAware = 3f;
     public float aimingTime = 0.5f;
     public float shootingTime = 1.5f;
+    public int shootingRepeat = 1;
 
     private Animator _animator;
     private Weapon _weapon;
@@ -73,8 +74,7 @@ public class EnemyPatrol : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Attacking: " + _attacking + " " + collision.tag);
-        if (!_attacking && collision.CompareTag("Player"))
+        if (!_attacking && collision.CompareTag("Player") && gameObject.activeSelf)
         {
             StartCoroutine("AimAndShoot");
         }
@@ -83,9 +83,10 @@ public class EnemyPatrol : MonoBehaviour
     private IEnumerator AimAndShoot()
     {
         _attacking = true;
+
         yield return new WaitForSeconds(aimingTime);
 
-        _animator.SetTrigger("Shoot");
+         _animator.SetTrigger("Shoot");
 
         yield return new WaitForSeconds(shootingTime);
 
@@ -116,8 +117,20 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (_weapon != null)
         {
+            StartCoroutine("MultiShooting");
+        }
+    }
+
+    private IEnumerator MultiShooting()
+    {
+        int shoot = 0;
+
+        while (shoot < shootingRepeat)
+        {
             _weapon.Shoot();
             _audio.Play();
+            shoot++;
+            yield return new WaitForSeconds(0.2f);
         }
     }
 
@@ -130,5 +143,6 @@ public class EnemyPatrol : MonoBehaviour
     {
         _attacking = false;
         StopCoroutine("AimAndShoot");
+        StopCoroutine("MultiShooting");
     }
 }

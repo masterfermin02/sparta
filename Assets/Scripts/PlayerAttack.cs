@@ -6,30 +6,28 @@ using UnityEngine.UI;
 public class PlayerAttack : MonoBehaviour
 {
     public Text scoreUI;
-    public Text hightestScoreUI;
+    public Text highestScoreUI;
+    public Text gameOverScoreUI;
 
     private bool _isAttacking;
     private Animator _animator;
     private int score = 0;
-    private int hightestScore = 0;
+    private int highestScore = 0;
     private int currentScore = 0;
+    private AudioSource _audio;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _audio = GameObject.Find("BackGroundAudio").GetComponent<AudioSource>();
     }
 
     private void LateUpdate()
     {
-        if (hightestScore < score)
-        {
-            hightestScore = score;
-        }
-
         if (currentScore != score)
         {
             currentScore = score;
-            updateUI();
+            UpdateUI();
         }
 
         if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
@@ -56,7 +54,7 @@ public class PlayerAttack : MonoBehaviour
         score += amount;
     }
 
-    private void updateUI()
+    private void UpdateUI()
     {
         if (scoreUI)
         {
@@ -64,13 +62,41 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    private void UpdateHighestScore()
+    {
+        if (highestScore < score)
+        {
+            highestScore = score;
+        }
+    }
+
     private void OnEnable()
     {
         score = 0;
+        if (!_audio.isPlaying)
+        {
+            _audio.Play();
+        }
     }
 
     private void OnDisable()
     {
-        hightestScoreUI.text = hightestScore.ToString();
+        UpdateHighestScore();
+
+        if (highestScoreUI)
+        {
+            highestScoreUI.text = highestScore.ToString();
+        }
+
+        if (gameOverScoreUI)
+        {
+            gameOverScoreUI.text = score.ToString();
+        }
+
+        if (_audio)
+        {
+            _audio.Pause();
+        }
+        
     }
 }

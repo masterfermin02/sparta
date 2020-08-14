@@ -40,6 +40,7 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
+            DisableEnemies();
             gameObject.SetActive(false);
         }
 
@@ -114,7 +115,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnDisable()
     {
-        DisableEnemies();
         if (gameOverMenu != null)
         {
             gameOverMenu.gameObject.SetActive(true);
@@ -129,7 +129,12 @@ public class PlayerHealth : MonoBehaviour
 
     private void DisableEnemies()
     {
+        Array.ForEach(GetActiveSelfEnemies(), enemy => enemy.SendMessageUpwards("AddDamage", 2, SendMessageOptions.DontRequireReceiver));
+    }
+
+    private GameObject[] GetActiveSelfEnemies()
+    {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        Array.ForEach(enemies, enemy => enemy.SendMessageUpwards("AddDamage", 2));
+        return Array.FindAll(enemies, enemy => enemy.activeSelf);
     }
 }
