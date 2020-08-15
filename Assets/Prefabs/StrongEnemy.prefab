@@ -259,6 +259,7 @@ MonoBehaviour:
   aimingTime: 0.2
   shootingTime: 1.5
   shootingRepeat: 2
+  floorPoint: {fileID: 7327180975257353070}
 --- !u!95 &1179615789
 Animator:
   serializedVersion: 3
@@ -342,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1e79e82c9514f559c67516bc1509f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHealth: 1
+  totalHealth: 2
   deadPoints: 15
 --- !u!82 &7634009748067330006
 AudioSource:

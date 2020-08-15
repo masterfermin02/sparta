@@ -270,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   waitingTime: 2
-  wallAware: 0.5
+  wallAware: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -278,6 +278,7 @@ MonoBehaviour:
   aimingTime: 0.3
   shootingTime: 1.5
   shootingRepeat: 3
+  floorPoint: {fileID: 8682866270530725055}
 --- !u!114 &8682866270544828716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,7 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1e79e82c9514f559c67516bc1509f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHealth: 1
+  totalHealth: 3
   deadPoints: 15
 --- !u!1001 &8682866272474545716
 PrefabInstance:

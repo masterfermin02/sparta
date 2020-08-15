@@ -31,13 +31,13 @@ public class EnemyHealth : MonoBehaviour
             {
                 player.AddScore(deadPoints);
             }
-            
-            gameObject.SetActive(false);
+            Dead();
         }
+    }
 
-
-
-        Debug.Log("Enemy health " + health);
+    public void Dead()
+    {
+        gameObject.SetActive(false);
     }
 
     private IEnumerator VisualFeedBack()

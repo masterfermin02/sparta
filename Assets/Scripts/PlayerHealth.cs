@@ -129,7 +129,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void DisableEnemies()
     {
-        Array.ForEach(GetActiveSelfEnemies(), enemy => enemy.SendMessageUpwards("AddDamage", 2, SendMessageOptions.DontRequireReceiver));
+        Array.ForEach(GetActiveSelfEnemies(), enemy => enemy.SendMessageUpwards("Dead", null, SendMessageOptions.DontRequireReceiver));
     }
 
     private GameObject[] GetActiveSelfEnemies()

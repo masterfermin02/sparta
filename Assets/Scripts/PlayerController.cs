@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 	public Transform groundCheck;
 	public LayerMask groundLayer;
 	public float groundCheckRadius;
+	public Joystick _joystick;
 
 	// References
 	private Rigidbody2D _rigidbody;
@@ -43,6 +44,12 @@ public class PlayerController : MonoBehaviour
 		if (_isAttacking == false) {
 			// Movement
 			float horizontalInput = Input.GetAxisRaw("Horizontal");
+			if (horizontalInput == 0f)
+            {
+				horizontalInput = _joystick.Horizontal;
+
+			}
+
 			_movement = new Vector2(horizontalInput, 0f);
 
 			// Flip character
@@ -57,16 +64,58 @@ public class PlayerController : MonoBehaviour
 		_isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
 		// Is Jumping?
-		if (Input.GetButtonDown("Jump") && _isGrounded == true && _isAttacking == false) {
-			_rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+		if (Input.GetButtonDown("Jump") || _joystick.Vertical > 0f) {
+			jump();
 		}
 
 		// Wanna Attack?
-		if (Input.GetButtonDown("Fire1") && _isGrounded == true && _isAttacking == false) {
+		if (Input.GetButtonDown("Fire1")) {
+			Attack();
+		}
+	}
+
+	public void jump()
+    {
+		if (CheckCanDoAction())
+        {
+			_rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+		}
+
+    }
+
+	public void Attack()
+    {
+		if (CheckCanDoAction())
+        {
 			_movement = Vector2.zero;
 			_rigidbody.velocity = Vector2.zero;
 			_animator.SetTrigger("Attack");
 		}
+    }
+
+	public void moveLeft()
+    {
+		if (_facingRight)
+		{
+			Flip();
+		}
+		_movement = Vector2.left;
+
+	}
+
+	public void moveRight()
+    {
+		if (!_facingRight)
+        {
+			Flip();
+        }
+		_movement = Vector2.right;
+	}
+
+	private bool CheckCanDoAction()
+    {
+		return _isGrounded == true && _isAttacking == false;
+
 	}
 
 	void FixedUpdate()

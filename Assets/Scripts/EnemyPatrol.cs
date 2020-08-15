@@ -12,6 +12,7 @@ public class EnemyPatrol : MonoBehaviour
     public float aimingTime = 0.5f;
     public float shootingTime = 1.5f;
     public int shootingRepeat = 1;
+    public Transform floorPoint;
 
     private Animator _animator;
     private Weapon _weapon;
@@ -19,7 +20,6 @@ public class EnemyPatrol : MonoBehaviour
     private bool _facingRight;
     private bool _attacking = false;
     private AudioSource _audio;
-    
 
     void Awake()
     {
@@ -62,9 +62,16 @@ public class EnemyPatrol : MonoBehaviour
     void Flip()
     {
         _facingRight = !_facingRight;
-        float localScaleX = transform.localScale.x;
-        localScaleX = localScaleX * -1f;
-        transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(FlipFloat(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        if (floorPoint)
+        {
+            floorPoint.localScale = new Vector3(FlipFloat(floorPoint.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+    }
+
+    float FlipFloat(float value)
+    {
+        return value * -1f;
     }
 
     private void LateUpdate()

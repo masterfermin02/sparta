@@ -300,6 +300,8 @@ MonoBehaviour:
   playerAware: 3
   aimingTime: 0.5
   shootingTime: 1.5
+  shootingRepeat: 1
+  floorPoint: {fileID: 1520479239278674192}
 --- !u!114 &5078755322336959263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,6 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHealth: 1
+  deadPoints: 10
 --- !u!95 &1520479239201516867
 Animator:
   serializedVersion: 3
