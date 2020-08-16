@@ -439,8 +439,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1e79e82c9514f559c67516bc1509f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHealth: 3
-  deadPoints: 15
+  totalHealth: 2
+  deadPoints: 20
 --- !u!1001 &8682866272474545716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -518,6 +518,12 @@ PrefabInstance:
       propertyPath: shooter
       value: 
       objectReference: {fileID: 8682866270544828719}
+    - target: {fileID: 2772539336534696200, guid: 97f14fa10ebc540099a601b1faecd236,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 678352703802404735, guid: 6f9e5b45446c04d7cbfd80b7320378bf,
+        type: 3}
     - target: {fileID: 2772539336534696202, guid: 97f14fa10ebc540099a601b1faecd236,
         type: 3}
       propertyPath: m_Name

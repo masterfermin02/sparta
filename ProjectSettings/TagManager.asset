@@ -43,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BeforeBackground
+    uniqueID: 1934901267
+    locked: 0
   - name: Background
     uniqueID: 747465021
     locked: 0
