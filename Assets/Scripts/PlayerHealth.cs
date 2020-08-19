@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject hordes;
     public GameObject startPosition;
     public GameObject _props;
+    public InitializeAdsScript ads;
 
     private int health;
     private float heartSize = 16f;
@@ -41,6 +42,11 @@ public class PlayerHealth : MonoBehaviour
         {
             health = 0;
             DisableEnemies();
+            if (ads)
+            {
+               ads.ShowInterstitialAd();
+            }
+            
             gameObject.SetActive(false);
         }
 

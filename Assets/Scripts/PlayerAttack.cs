@@ -45,7 +45,7 @@ public class PlayerAttack : MonoBehaviour
             && (collision.CompareTag("Enemy") || collision.CompareTag("BigBullet"))
             )
         {
-            collision.SendMessageUpwards("AddDamage", 1);
+            collision.SendMessageUpwards("AddDamage", 1, SendMessageOptions.DontRequireReceiver);
         }
     }
 
@@ -67,6 +67,7 @@ public class PlayerAttack : MonoBehaviour
         if (highestScore < score)
         {
             highestScore = score;
+            OnAddScoreToLeaderBorad(score);
         }
     }
 
@@ -98,5 +99,24 @@ public class PlayerAttack : MonoBehaviour
             _audio.Pause();
         }
         
+    }
+
+    public void OnAddScoreToLeaderBorad(int score)
+    {
+        if (Social.localUser.authenticated)
+        {
+            Social.ReportScore(score, GPGSIds.leaderboard_score, (bool success) =>
+            {
+                if (success)
+                {
+                    Debug.Log("Update Score Success");
+
+                }
+                else
+                {
+                    Debug.Log("Update Score Fail");
+                }
+            });
+        }
     }
 }
