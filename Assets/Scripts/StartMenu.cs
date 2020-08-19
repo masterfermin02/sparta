@@ -6,23 +6,6 @@ using UnityEngine;
 
 public class StartMenu : MonoBehaviour
 {
-    public GameObject loginButton;
-    public GameObject playButton;
-    public GameObject leaderBoardButton;
-
-    private void Awake()
-    {
-        if (Social.localUser.authenticated)
-        {
-            playButton.SetActive(true);
-            leaderBoardButton.SetActive(true);
-        }
-        else
-        {
-            loginButton.SetActive(true);
-        }
-    }
-
     #region DEFAULT_UNITY_CALLBACKS
     void Start()
     {
@@ -42,14 +25,11 @@ public class StartMenu : MonoBehaviour
 
     public void Login()
     {
-        Social.localUser.Authenticate((bool success) =>
+        PlayGamesPlatform.Instance.Authenticate((bool success) =>
         {
             if (success)
             {
                 Debug.Log("Login Sucess");
-                playButton.SetActive(true);
-                leaderBoardButton.SetActive(true);
-                loginButton.SetActive(false);
             }
             else
             {

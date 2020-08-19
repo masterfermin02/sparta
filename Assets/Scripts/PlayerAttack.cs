@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GooglePlayGames;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -103,9 +104,9 @@ public class PlayerAttack : MonoBehaviour
 
     public void OnAddScoreToLeaderBorad(int score)
     {
-        if (Social.localUser.authenticated)
+        if (PlayGamesPlatform.Instance.localUser.authenticated)
         {
-            Social.ReportScore(score, GPGSIds.leaderboard_score, (bool success) =>
+            PlayGamesPlatform.Instance.ReportScore(score, GPGSIds.leaderboard_score, (bool success) =>
             {
                 if (success)
                 {
