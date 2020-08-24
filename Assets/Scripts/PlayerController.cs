@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 	public LayerMask groundLayer;
 	public float groundCheckRadius;
 	public Joystick _joystick;
+	public GameObject joystickGroup;
+	public GameObject eletricAttack;
 
 	// References
 	private Rigidbody2D _rigidbody;
@@ -27,19 +29,26 @@ public class PlayerController : MonoBehaviour
 
 	// Attack
 	private bool _isAttacking;
+	private Transform _firePoint;
 
 	void Awake()
 	{
 		_rigidbody = GetComponent<Rigidbody2D>();
 		_animator = GetComponent<Animator>();
+		_firePoint = transform.Find("FirePoint");
 	}
 
 	void Start()
     {
-        
-    }
+#if UNITY_IOS
+        joystickGroup.SetActive(true);
+#elif UNITY_ANDROID
+		joystickGroup.SetActive(true);
+#endif
 
-    void Update()
+	}
+
+	void Update()
     {
 		if (_isAttacking == false) {
 			// Movement
@@ -93,6 +102,17 @@ public class PlayerController : MonoBehaviour
 		}
     }
 
+	public void ElectricAttack()
+    {
+		if (CheckCanDoAction())
+		{
+			_movement = Vector2.zero;
+			_rigidbody.velocity = Vector2.zero;
+			_animator.SetTrigger("ElectricAttack");
+			Instantiate(eletricAttack, _firePoint.position, Quaternion.identity);
+		}
+	}
+
 	public void moveLeft()
     {
 		if (_facingRight)
@@ -128,16 +148,12 @@ public class PlayerController : MonoBehaviour
 
 	void LateUpdate()
 	{
-		_animator.SetBool("Idle", _movement == Vector2.zero);
+		_animator.SetBool("Idle", _movement == Vector2.zero && !_isAttacking);
 		_animator.SetBool("IsGrounded", _isGrounded);
 		_animator.SetFloat("VerticalVelocity", _rigidbody.velocity.y);
 
 		// Animator
-		if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) {
-			_isAttacking = true;
-		} else {
-			_isAttacking = false;
-		}
+		_isAttacking = IsAttacking();
 
 		// Long Idle
 		if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle")) {
@@ -157,5 +173,11 @@ public class PlayerController : MonoBehaviour
 		float localScaleX = transform.localScale.x;
 		localScaleX = localScaleX * -1f;
 		transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
+	}
+
+	private bool IsAttacking()
+    {
+		return _animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") || _animator.GetCurrentAnimatorStateInfo(0).IsTag("ElectricAttack");
+
 	}
 }

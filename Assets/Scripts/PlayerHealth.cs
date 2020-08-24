@@ -18,6 +18,8 @@ public class PlayerHealth : MonoBehaviour
 
     private SpriteRenderer _renderer;
     private PlayerController _controller;
+    private int deaths = 0;
+    private int adsFrequency = 3;
 
     // Use this for initialization
     void Start()
@@ -41,8 +43,9 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
+            deaths++;
             DisableEnemies();
-            if (ads)
+            if (canShowAds())
             {
                ads.ShowInterstitialAd();
             }
@@ -51,7 +54,11 @@ public class PlayerHealth : MonoBehaviour
         }
 
         UpdateHeartUI();
-        Debug.Log(" health " + health);
+    }
+
+    private bool canShowAds()
+    {
+        return ads && deaths % adsFrequency == 0;
     }
 
     public void AddHealth(int amount)
@@ -98,8 +105,16 @@ public class PlayerHealth : MonoBehaviour
         {
             _controller.gameObject.transform.position = startPosition.gameObject.transform.position;
         }
+        StartCoroutine("ActiveProps");
+    }
 
-        EnableRecoveryHealths();
+    private IEnumerator ActiveProps()
+    {
+        while (true)
+        {
+            EnableRecoveryHealths();
+            yield return new WaitForSeconds(5);
+        }
     }
 
     private void EnableRecoveryHealths()
@@ -112,7 +127,7 @@ public class PlayerHealth : MonoBehaviour
         for (int i = 0; i < _props.transform.childCount; i++)
         {
             GameObject obj = _props.transform.GetChild(i).gameObject;
-            if (!obj.activeSelf && obj.CompareTag("RecoveryHeart"))
+            if (!obj.activeSelf && (obj.CompareTag("RecoveryHeart") || obj.CompareTag("money")) )
             {
                 obj.SetActive(true);
             }
@@ -131,6 +146,7 @@ public class PlayerHealth : MonoBehaviour
             hordes.gameObject.SetActive(false);
         }
         StopCoroutine("VisualFeedBack");
+        StopCoroutine("ActiveProps");
     }
 
     private void DisableEnemies()

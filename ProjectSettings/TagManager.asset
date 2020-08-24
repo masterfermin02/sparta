@@ -9,6 +9,8 @@ TagManager:
   - BigBullet
   - RecoveryHeart
   - Props
+  - money
+  - ElectricAttack
   layers:
   - Default
   - TransparentFX

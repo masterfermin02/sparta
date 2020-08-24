@@ -8,9 +8,11 @@ public class CollectibleItem : MonoBehaviour
 	[SerializeField] GameObject burstParticles;
 
 	public int health = 1;
+	public string colliderSendMessage = "AddHealth";
 
 	private SpriteRenderer _rederer;
 	private Collider2D _collider;
+
 
 	private void Awake()
 	{
@@ -21,7 +23,7 @@ public class CollectibleItem : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.CompareTag("Player")) {
-			collision.SendMessageUpwards("AddHealth", health);
+			collision.SendMessageUpwards(colliderSendMessage, health, SendMessageOptions.DontRequireReceiver);
 
 			_collider.enabled = false;
 
